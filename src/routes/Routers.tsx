@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "../pages/Home";
 import Bookings from "../pages/Bookings";
 import Calendars from "../pages/Calendars";
-import "../pages/Calendars.css"
+import "../styles/calendars.css";
 import { CalendarTest } from "../pages/CalendarTest";
 
 const Routers = () => {
