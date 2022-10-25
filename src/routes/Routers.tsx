@@ -4,6 +4,9 @@ import Home from "../pages/Home";
 import Bookings from "../pages/Bookings";
 import Calendars from "../pages/Calendars";
 import "../pages/Calendars.css"
+import "../pages/CalendarsTest.css"
+import "../components/TopNav/TopNav.css"
+import "../components/VerticalNavbar/VerticalNavbar.css";
 import { CalendarTest } from "../pages/CalendarTest";
 
 const Routers = () => {

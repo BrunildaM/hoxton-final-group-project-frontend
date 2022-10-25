@@ -1,6 +1,6 @@
-.calendarContainer{
-    /* width: 800px;
-    height: 800px; */
-    /* display: grid; */
-    /* place-items: center; */
+.calendar{
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 80px;
+    background-color: black;
 }
