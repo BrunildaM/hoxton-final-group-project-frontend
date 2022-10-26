@@ -6,7 +6,9 @@ const TopNav = () => {
       <h1 className="logoText">Easy Peasy</h1>
     </div>
     <div className="logout">
-      <button>Logout</button>
+      <button>Business</button>
+    <span>{" "}OR{" "}</span>
+      <button>Client</button>
     </div>
   </div>
   )
