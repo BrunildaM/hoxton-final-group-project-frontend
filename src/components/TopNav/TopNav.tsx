@@ -11,7 +11,10 @@ const TopNav = () => {
       </div>
       <div className="logout">
         <button >Business</button>
+        {" "}
         <span> OR </span>
+        {" "}
+        
       </div>
     </div>
   );
