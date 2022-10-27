@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
+
 
 const TopNav = () => {
+
+  
   return (
     <div className="topNavBar">
       <div className="logo">
@@ -11,8 +13,10 @@ const TopNav = () => {
         {/* <Link to="/sign-in-business"> */}
           <button>Business</button>
         {/* </Link> */}
+        {" "}
         <span> OR </span>
-        
+        {" "}
+        <button >Client</button>
       </div>
     </div>
   );

@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-export function SignInBusiness() {
+export function SignUpBusiness() {
   const [user, setUser] = useState(null);
-  const navigate = useNavigate()
 
-  function signIn(data: any) {
-    setUser(data.businessOwner);
+  function signIn(data: { user: any; token: string }) {
+    setUser(data.user);
     localStorage.token = data.token;
   }
 
@@ -39,7 +38,7 @@ export function SignInBusiness() {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            fetch("http://localhost:4000/sign-in/businessOwner", {
+            fetch("http://localhost:4000/sign-up/businessOwner", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -55,12 +54,11 @@ export function SignInBusiness() {
                   alert(data.error);
                 } else {
                   signIn(data);
-                  navigate("/buisnesses")
                 }
               });
           }}
         >
-          <h1 className="h1">Sign In</h1>
+          <h1 className="h1">Sign Up</h1>
 
           <input
             id="email"
@@ -76,17 +74,15 @@ export function SignInBusiness() {
             type="password"
             placeholder="Password"
             className="input-GS"
-            required
           />
 
           <button className="button-GS">
-            <b>Sign In</b>
+            <b>Register</b>
           </button>
-
           <p className="message">
-            Not Registered?{" "}
-            <Link to="/sign-up-business" className="signup">
-              SIGN UP
+            Registered?{" "}
+            <Link to="/sign-in-business" className="signup">
+              SIGN IN
             </Link>
           </p>
         </form>

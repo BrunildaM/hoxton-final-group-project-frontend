@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-export function SignInBusiness() {
+export function SignInClient() {
   const [user, setUser] = useState(null);
-  const navigate = useNavigate()
 
   function signIn(data: any) {
-    setUser(data.businessOwner);
+    setUser(data.client);
     localStorage.token = data.token;
   }
 
@@ -17,7 +16,7 @@ export function SignInBusiness() {
 
   useEffect(() => {
     if (localStorage.token) {
-      fetch("http://localhost:4000/validate/businessOwner", {
+      fetch("http://localhost:4000/validate/client", {
         headers: {
           Authorization: localStorage.token,
         },
@@ -39,7 +38,7 @@ export function SignInBusiness() {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            fetch("http://localhost:4000/sign-in/businessOwner", {
+            fetch("http://localhost:4000/sign-in/client", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -55,7 +54,6 @@ export function SignInBusiness() {
                   alert(data.error);
                 } else {
                   signIn(data);
-                  navigate("/buisnesses")
                 }
               });
           }}
@@ -85,7 +83,7 @@ export function SignInBusiness() {
 
           <p className="message">
             Not Registered?{" "}
-            <Link to="/sign-up-business" className="signup">
+            <Link to="/sign-up-client" className="signup">
               SIGN UP
             </Link>
           </p>
