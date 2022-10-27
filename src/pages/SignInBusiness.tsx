@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 export function SignInBusiness() {
   const [user, setUser] = useState(null);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   function signIn(data: any) {
     setUser(data.businessOwner);
@@ -55,7 +55,7 @@ export function SignInBusiness() {
                   alert(data.error);
                 } else {
                   signIn(data);
-                  navigate("/buisnesses")
+                  navigate("/buisnesses");
                 }
               });
           }}
@@ -84,7 +84,7 @@ export function SignInBusiness() {
           </button>
 
           <p className="message">
-            Not Registered?{" "}
+            Not Registered Yet?{" "}
             <Link to="/sign-up-business" className="signup">
               SIGN UP
             </Link>

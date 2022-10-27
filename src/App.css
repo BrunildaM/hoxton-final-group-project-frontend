@@ -82,7 +82,7 @@ section {
 .section1-wrapper {
   margin-top: 40px;
   display: grid;
-  background-color: rgba(0, 0, 0, 0.1);
+  background: var(--newsletter-bg);
   align-content: center;
   justify-content: center;
   height: 550px;
@@ -95,8 +95,9 @@ form {
   gap: 1rem;
 }
 
+/* rgb(248, 242, 242); */
 .input-GS {
-  background-color: rgb(201, 175, 175);
+  background: rgb(252, 234, 245);  
   border-style: none;
   border-radius: 5px;
   font-size: 17px;
@@ -106,8 +107,8 @@ form {
 }
 
 .button-GS {
-  background-color: #395845;
-  color: white;
+  background: var(--btn-primary-bg);
+  color: black;
   font-size: 17px;
   font-family: sans-serif;
   border-radius: 5px;
