@@ -2,25 +2,25 @@ import { useEffect, useState } from "react";
 import "../styles/Buisness.css";
 
 export function Buisness() {
-  const [buisnesses, setBuisnesses] = useState([
-    { name: "landi", category: "food" },
-    {
-      name: "aidi",
-      category: "music",
-    },
-  ]);
-  const [buisnessesToShow, setBuisnessesToShow] = useState([]);
+  const [buisnesses, setBuisnesses] = useState([]);
   const [categoriesToFilter, setCategoriesToFilter] = useState([]);
-
   const [search, setSearch] = useState("");
 
-  function selectCategoriesForFiltering(data) {
+  useEffect(() => {
+    fetch("http://localhost:4000/business")
+      .then((res) => res.json())
+      .then((businessesFromdb) => setBuisnesses(businessesFromdb));
+  }, []);
+
+  function selectCategoriesForFiltering(data: any) {
     if (categoriesToFilter.length === 0) {
       let array = structuredClone(categoriesToFilter);
       array.push(data);
       setCategoriesToFilter(array);
     } else {
+      //@ts-ignore
       if (categoriesToFilter.includes(data)) {
+        //@ts-ignore
         let index = categoriesToFilter.indexOf(data);
         let array = structuredClone(categoriesToFilter);
         array.splice(index, 1);
@@ -33,8 +33,8 @@ export function Buisness() {
     }
   }
 
-  const filteredBuisnesses = buisnesses.filter((item) =>
-    item.name.toLowerCase().includes(search.toLowerCase())
+  const filteredBuisnesses = buisnesses.filter((business) =>
+    business.name.toLowerCase().includes(search.toLowerCase())
   );
 
   /*function collectedFilter() {
@@ -82,6 +82,7 @@ export function Buisness() {
             value={"food"}
             className="checkbox"
             onClick={(e) => {
+              //@ts-ignore
               selectCategoriesForFiltering(e.target.value);
             }}
           />
@@ -105,114 +106,54 @@ export function Buisness() {
             </button>
           </form>
         </nav>
-        {categoriesToFilter.length > 0  ? (
-          <main>
-            {filteredBuisnesses.map((item) => (
-              <h1>{item.name}</h1>
-            ))}
-          </main>
-        ) : (
-          <>
-            <section className="grid-section">
-              <div id="container">
-                <div className="product-details">
-                  <h1>Hair Dresser</h1>
-                  <span className="hint-star star">
-                    <i className="fa fa-star" aria-hidden="true"></i>
-                    <i className="fa fa-star" aria-hidden="true"></i>
-                    <i className="fa fa-star" aria-hidden="true"></i>
-                    <i className="fa fa-star" aria-hidden="true"></i>
-                    <i className="fa fa-star-o" aria-hidden="true"></i>
-                  </span>
+        <section className="grid-section">
+          {filteredBuisnesses.map((business) => (
+            <div id="container">
+              <div className="product-details">
+                <h1>{business.name}</h1>
+                <span className="hint-star star">
+                  <i className="fa fa-star" aria-hidden="true"></i>
+                  <i className="fa fa-star" aria-hidden="true"></i>
+                  <i className="fa fa-star" aria-hidden="true"></i>
+                  <i className="fa fa-star" aria-hidden="true"></i>
+                  <i className="fa fa-star-o" aria-hidden="true"></i>
+                </span>
 
-                  <p className="information">
-                    " Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Nulla, nisi!.
-                  </p>
+                <p className="information">
+                  {business.category.services.map((service) => (
+                    <p>{service.name}</p>
+                  ))}
+                </p>
 
-                  <div className="control">
-                    <button className="btn">
-                      <span className="buy">Visit Page</span>
-                    </button>
-                  </div>
-                </div>
-
-                <div className="product-image">
-                  <img
-                    src="https://images.pexels.com/photos/2076932/pexels-photo-2076932.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                    alt=""
-                  />
-
-                  <div className="info">
-                    <h2> Description</h2>
-                    <ul>
-                      <li>
-                        <strong>Height : </strong>5 Ft{" "}
-                      </li>
-                      <li>
-                        <strong>Shade : </strong>Olive green
-                      </li>
-                      <li>
-                        <strong>Decoration: </strong>balls and bells
-                      </li>
-                      <li>
-                        <strong>Material: </strong>Eco-Friendly
-                      </li>
-                    </ul>
-                  </div>
+                <div className="control">
+                  <button className="btn">
+                    <span className="buy">Visit Page</span>
+                  </button>
                 </div>
               </div>
-              <div id="container">
-                <div className="product-details">
-                  <h1>Hair Dresser</h1>
-                  <span className="hint-star star">
-                    <i className="fa fa-star" aria-hidden="true"></i>
-                    <i className="fa fa-star" aria-hidden="true"></i>
-                    <i className="fa fa-star" aria-hidden="true"></i>
-                    <i className="fa fa-star" aria-hidden="true"></i>
-                    <i className="fa fa-star-o" aria-hidden="true"></i>
-                  </span>
 
-                  <p className="information">
-                    " Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Nulla, nisi!.
-                  </p>
+              <div className="product-image">
+                <img src={business.logo} alt="" />
 
-                  <div className="control">
-                    <button className="btn">
-                      <span className="buy">Visit Page</span>
-                    </button>
-                  </div>
-                </div>
-
-                <div className="product-image">
-                  <img
-                    src="https://images.pexels.com/photos/2076932/pexels-photo-2076932.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                    alt=""
-                  />
-
-                  <div className="info">
-                    <h2> Description</h2>
-                    <ul>
-                      <li>
-                        <strong>Height : </strong>5 Ft{" "}
-                      </li>
-                      <li>
-                        <strong>Shade : </strong>Olive green
-                      </li>
-                      <li>
-                        <strong>Decoration: </strong>balls and bells
-                      </li>
-                      <li>
-                        <strong>Material: </strong>Eco-Friendly
-                      </li>
-                    </ul>
-                  </div>
+                <div className="info">
+                  <h2> Description</h2>
+                  <ul>
+                    <li>
+                      <strong>Category : </strong>{" "}{business.category.name}
+                    </li>
+                    <li>
+                      <strong>Phone number : </strong>{" "}{business.phoneNumber}
+                    </li>
+                    <li>
+                      <strong>Address: </strong>{" "}Tirana, Albania
+                    </li>
+                   
+                  </ul>
                 </div>
               </div>
-            </section>
-          </>
-        )}
+            </div>
+          ))}
+        </section>
       </main>
     </section>
   );
