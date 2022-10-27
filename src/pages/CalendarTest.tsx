@@ -42,7 +42,7 @@ export function CalendarTest() {
     fetch("http://localhost/4000/appointment", {
        method:"POST",
        headers:{
-        "Conetnt-type":"application/json"
+        "Content-type":"application/json"
        },
        body:JSON.stringify({
         

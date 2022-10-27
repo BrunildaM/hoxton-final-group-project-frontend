@@ -27,7 +27,7 @@ const SignInClient: React.FC<Props> = ({ setUser }) => {
             alert(data.error);
           } else {
             signIn(data);
-            navigate("/buisness");
+            navigate("/business");
           }
         });
     }
@@ -55,6 +55,7 @@ const SignInClient: React.FC<Props> = ({ setUser }) => {
                   alert(data.error);
                 } else {
                   signIn(data);
+                  navigate("/business");
                 }
               });
           }}
