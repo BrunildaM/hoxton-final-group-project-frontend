@@ -1,7 +1,25 @@
 import { Link, useNavigate } from "react-router-dom";
+import { BusinessOwner, Client } from "../types";
 
-const TopNav = () => {
+type Props = {
+  user: Client | BusinessOwner | null;
+  setUser: React.Dispatch<React.SetStateAction<Client | BusinessOwner | null>>;
+};
+
+const TopNav: React.FC<Props> = ({ user, setUser }) => {
   const navigate = useNavigate();
+
+  const isLoggedIn = user !== null;
+
+  function signOut() {
+    setUser(null);
+    localStorage.removeItem("token");
+  }
+
+  const logout = () => {
+    signOut();
+    navigate("/home");
+  };
 
   return (
     <div className="topNavBar">
@@ -14,10 +32,14 @@ const TopNav = () => {
         />
         <h1 className="logoText">BookingOlogy</h1>
       </div>
-      <div className="logout">
-        <Link to="/sign-in-business">Business</Link> <span> OR </span>{" "}
-        <Link to="/sign-in-client">Client</Link>
-      </div>
+      {isLoggedIn ? (
+        <button onClick={logout}>Log Out</button>
+      ) : (
+        <div className="logout">
+          <Link to="/sign-in-business">Business</Link> <span> OR </span>{" "}
+          <Link to="/sign-in-client">Client</Link>
+        </div>
+      )}
     </div>
   );
 };
