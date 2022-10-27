@@ -1,0 +1,33 @@
+.topNavBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.logoImg {
+  height: 40px;
+  width: 40px;
+}
+.logoText {
+  font-family: cursive;
+  color: rgba(0, 0, 0, 0.82);
+}
+.logout {
+  margin-right: 1.4rem;
+}
+.logout button {
+  border: none;
+  background-color: transparent;
+  font-size: 18px;
+  font-weight: 300;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.789);
+}
