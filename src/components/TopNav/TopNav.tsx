@@ -14,7 +14,7 @@ const TopNav = () => {
         {" "}
         <span> OR </span>
         {" "}
-        
+        <button >Client</button>
       </div>
     </div>
   );
