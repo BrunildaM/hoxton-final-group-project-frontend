@@ -8,7 +8,7 @@ const TopNav = () => {
       <div className="logo">
         <img
           className="logoImg"
-          src="../public/img/logo.gif"
+          src="../src/assets/img/logo.gif"
           alt=""
           onClick={() => navigate("/home")}
         />
