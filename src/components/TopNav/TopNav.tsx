@@ -1,14 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const TopNav = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="topNavBar">
       <div className="logo">
-        <img className="logoImg" src="../public/img/logo.png" alt="" />
-        <h1 className="logoText">Easy Peasy</h1>
+        <img
+          className="logoImg"
+          src="../public/img/logo.gif"
+          alt=""
+          onClick={() => navigate("/home")}
+        />
+        <h1 className="logoText">BookingOlogy</h1>
       </div>
       <div className="logout">
-        <button>Business</button> <span> OR </span> <button>Client</button>
+        <Link to="/sign-in-business">Business</Link> <span> OR </span>{" "}
+        <Link to="/sign-in-client">Client</Link>
       </div>
     </div>
   );

@@ -13,11 +13,12 @@
 }
 
 .logoImg {
-  height: 40px;
-  width: 40px;
+  height: 60px;
+  width: 60px;
+  background: inherit;
 }
 .logoText {
-  font-family: cursive;
+  /* font-family: cursive; */
   color: rgba(0, 0, 0, 0.82);
 }
 .logout {

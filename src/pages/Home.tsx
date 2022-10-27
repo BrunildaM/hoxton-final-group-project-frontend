@@ -158,7 +158,7 @@ const Home = () => {
             <h2>
               Save time scheduling appointments and managing your business with
             </h2>
-            <h2 className="highlight">OUR NAME(ca emri btw?)</h2>
+            <h2 className="highlight">BookingOlogy</h2>
           </div>
 
           <div className="service__item-wrapper">
