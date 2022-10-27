@@ -28,6 +28,8 @@ export function Buisness() {
     setCategoriesToFilter(data);
   }
 
+  
+
   let filteredBuisnesses = [];
   categoriesToFilter
     ? (filteredBuisnesses = buisnesses
@@ -39,19 +41,6 @@ export function Buisness() {
         business.name.toLowerCase().includes(search.toLowerCase())
       ));
 
-  /*function collectedFilter() {
-    const array = [];
-    for (const iterator of categoriesToFilter) {
-      const filt = buisnesses.filter((item) => item.category === iterator);
-      array.push(filt);
-    }
-    for (const iterator of namesToFilter) {
-      const filt1 = array.filter(
-        (item) => item.name.toLowerCase() === filt1.toLowerCase()
-      );
-    }
-    setBuisnessesToShow(array);
-  }*/
 
   return (
     <section className="main-section">
