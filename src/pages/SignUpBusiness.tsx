@@ -44,8 +44,11 @@ export function SignUpBusiness() {
                 "Content-Type": "application/json",
               },
               body: JSON.stringify({
+                name: e.target.name.value,
+                age: Number(e.target.age.value),
                 email: e.target.email.value,
                 password: e.target.password.value,
+                avatar: e.target.avatar.value,
               }),
             })
               .then((resp) => resp.json())
@@ -61,6 +64,23 @@ export function SignUpBusiness() {
           <h1 className="h1">Sign Up</h1>
 
           <input
+            id="name"
+            name="name"
+            type="text"
+            placeholder="Name"
+            className="input-GS"
+            required
+          />
+
+          <input
+            id="age"
+            name="age"
+            type="number"
+            placeholder="Age"
+            className="input-GS"
+          />
+
+          <input
             id="email"
             name="email"
             type="text"
@@ -73,6 +93,15 @@ export function SignUpBusiness() {
             name="password"
             type="password"
             placeholder="Password"
+            className="input-GS"
+            required
+          />
+
+          <input
+            id="avatar"
+            name="avatar"
+            type="text"
+            placeholder="Avatar"
             className="input-GS"
           />
 
