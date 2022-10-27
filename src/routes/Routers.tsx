@@ -11,6 +11,7 @@ import { SignInBusiness } from "../pages/SignInBusiness";
 import { SignUpBusiness } from "../pages/SignUpBusiness";
 import { SignInClient } from "../pages/SignInClient";
 import { SignUpClient } from "../pages/SignUpClient";
+import { BuisnessDetails } from "../pages/BuisnessDetails";
 
 const Routers = () => {
   return (
@@ -20,6 +21,7 @@ const Routers = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/bookings" element={<Bookings />} />
         <Route path="/buisnesses" element={<Buisness />} />
+        <Route path="/buisnesses/:id" element={<BuisnessDetails />} />
         <Route path="/calendartest" element={<CalendarTest />} />
         <Route path="/sign-in-business" element={<SignInBusiness />} />
         <Route path="/sign-up-business" element={<SignUpBusiness />} />

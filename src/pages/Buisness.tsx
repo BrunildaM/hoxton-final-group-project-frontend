@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Business, Category } from "../components/types";
 import "../styles/Buisness.css";
 
@@ -109,7 +110,9 @@ export function Buisness() {
 
                 <div className="control">
                   <button className="btn">
-                    <span className="buy">Visit Page</span>
+                    <Link to={`/buisnesses/${business.id}`}>
+                      <span className="buy">Visit Page</span>
+                    </Link>
                   </button>
                 </div>
               </div>

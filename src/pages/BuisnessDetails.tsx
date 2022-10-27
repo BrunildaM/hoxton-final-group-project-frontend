@@ -17,41 +17,48 @@ import {
 import { useEffect, useState } from "react";
 import { AppBar } from "@mui/material";
 import VerticalNavbar from "../components/VerticalNavbar/VerticalNavbar";
+import { Buisness } from "./Buisness";
+import { useParams } from "react-router-dom";
 
 type Appointment = {
-  id: number,
-  serviceId:number,
-  startDate:string,
-  endDate:string,
-  title:string,
-  clientId:number,
-  businessId:number
-}
+  id: number;
+  serviceId: number;
+  startDate: string;
+  endDate: string;
+  title: string;
+  clientId: number;
+  businessId: number;
+};
 
-export function CalendarTest() {
+export function BuisnessDetails() {
   let [appointments, setAppointments] = useState<Appointment[]>([]);
-  console.log(appointments)
-  useEffect(()=>{
+  console.log(appointments);
+  useEffect(() => {
     fetch("http://localhost:4000/appointments")
-    .then(res=>res.json())
-    .then(resp=>setAppointments(resp))
-  },[])
+      .then((res) => res.json())
+      .then((resp) => setAppointments(resp));
+  }, []);
 
-  
+  const params = useParams()
+
   const saveAppointment = (data: any) => {
     fetch("http://localhost/4000/appointment", {
-       method:"POST",
-       headers:{
-        "Conetnt-type":"application/json"
-       },
-       body:JSON.stringify({
-        
-       })
-    })
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        startDate: data.added.startDate,
+        endDate: data.added.endDate,
+        title: data.added.title,
+        businessOwnerId: Number(params.id),
+        email: "john@email.com",
+        id: 2
+      }),
+    });
     setAppointments([...appointments, data.added]);
   };
 
-  
   return (
     <div id="calendar">
       <div className="navbarVertical">
@@ -71,3 +78,4 @@ export function CalendarTest() {
     </div>
   );
 }
+
