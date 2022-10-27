@@ -37,7 +37,7 @@ export function SignUpBusiness() {
     <div className="wrapper">
       <div className="section1-wrapper">
         <form
-          onSubmit={(e) => {
+          onSubmit={(e: any) => {
             e.preventDefault();
             fetch("http://localhost:4000/sign-up/businessOwner", {
               method: "POST",

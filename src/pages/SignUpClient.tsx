@@ -36,7 +36,7 @@ export function SignUpClient() {
     <div className="wrapper">
       <div className="section1-wrapper">
         <form
-          onSubmit={(e) => {
+          onSubmit={(e: any) => {
             e.preventDefault();
             fetch("http://localhost:4000/sign-up/client", {
               method: "POST",

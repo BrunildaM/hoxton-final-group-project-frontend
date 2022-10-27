@@ -1,21 +1,27 @@
 import { useEffect, useState } from "react";
+import { Business, Category } from "../components/types";
 import "../styles/Buisness.css";
 
 export function Buisness() {
-  const [buisnesses, setBuisnesses] = useState([]);
+  const [buisnesses, setBuisnesses] = useState<Business[]>([]);
   const [categoriesToFilter, setCategoriesToFilter] = useState("");
   const [search, setSearch] = useState("");
   const [categories, setCategories] = useState([]);
+
+
   useEffect(() => {
     fetch("http://localhost:4000/business")
       .then((res) => res.json())
       .then((businessesFromdb) => setBuisnesses(businessesFromdb));
   }, []);
+
+
   useEffect(() => {
     fetch("http://localhost:4000/categories")
       .then((res) => res.json())
       .then((businessesFromdb) => setCategories(businessesFromdb));
   }, []);
+
 
   function selectCategoriesForFiltering(data: any) {
     setCategoriesToFilter(data);
@@ -51,7 +57,7 @@ export function Buisness() {
       <aside className="filter-section">
         <h1 id="title">Filter By Category</h1>
         <section className="categories">
-          {categories.map((item) => (
+          {categories.map((item: Category) => (
             <>
               <input
                 type="radio"
