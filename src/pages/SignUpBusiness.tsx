@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export function SignUpBusiness() {
   const [user, setUser] = useState(null);
+ const navigate = useNavigate()
 
   function signIn(data: { user: any; token: string }) {
     setUser(data.user);
@@ -56,7 +57,8 @@ export function SignUpBusiness() {
                 if (data.error) {
                   alert(data.error);
                 } else {
-                  signIn(data);
+                  // signIn(data);
+                  navigate("/home")
                 }
               });
           }}
@@ -76,6 +78,7 @@ export function SignUpBusiness() {
             id="age"
             name="age"
             type="number"
+            min={18}
             placeholder="Age"
             className="input-GS"
           />
