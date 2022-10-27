@@ -99,7 +99,7 @@ export function Buisness() {
 
                 <div className="control">
                   <button className="btn">
-                    <Link to={`/buisnesses/${business.id}`}>
+                    <Link to={`/business/${business.id}`}>
                       <span className="buy">Visit Page</span>
                     </Link>
                   </button>

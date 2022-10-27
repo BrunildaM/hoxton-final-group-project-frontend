@@ -13,12 +13,12 @@ const CustomNav = () => {
   return (
     <nav className="navbar-menu" style={{ width: window === false ? 250 : 60 }}>
       <div className="burger" onClick={() => openClose()}>
-        <img src="src/assets/img/menu.svg" alt="burger" />
+        <img src="../src/assets/img/menu.svg" alt="burger" />
       </div>
       <ul className="navbar__list">
         <div className="navbar__li-box">
           <img
-            src={"src/assets/img/dashboard.svg"}
+            src={"../src/assets/img/dashboard.svg"}
             alt={"img/dashboard.svg"}
             style={{ paddingLeft: window === false ? 27 : 17 }}
           />
@@ -31,7 +31,7 @@ const CustomNav = () => {
         </div>
         <div className="navbar__li-box">
           <img
-            src={"src/assets/img/restaurant.svg"}
+            src={"../src/assets/img/restaurant.svg"}
             alt={"img/restaurant.svg"}
             style={{ paddingLeft: window === false ? 27 : 17 }}
           />
@@ -45,7 +45,7 @@ const CustomNav = () => {
 
         <div className="navbar__li-box">
           <img
-            src={"src/assets/img/manage user.svg"}
+            src={"../src/assets/img/manage user.svg"}
             alt={"img/dashboard.svg"}
             style={{ paddingLeft: window === false ? 27 : 17 }}
           />
@@ -59,7 +59,7 @@ const CustomNav = () => {
 
         <div className="navbar__li-box">
           <img
-            src={"src/assets/img/manage  order.svg"}
+            src={"../src/assets/img/manage  order.svg"}
             alt={"img/dashboard.svg"}
             style={{ paddingLeft: window === false ? 27 : 17 }}
           />
@@ -73,7 +73,7 @@ const CustomNav = () => {
 
         <div className="navbar__li-box">
           <img
-            src={"src/assets/img/manage coupon.svg"}
+            src={"../src/assets/img/manage coupon.svg"}
             alt={"img/dashboard.svg"}
             style={{ paddingLeft: window === false ? 27 : 17 }}
           />
