@@ -25,7 +25,7 @@ type Appointment = {
   endDate:string,
   title:string,
   clientId:number,
-  businessId:1
+  businessId:number
 }
 
 export function CalendarTest() {
@@ -39,6 +39,15 @@ export function CalendarTest() {
 
   
   const saveAppointment = (data: any) => {
+    fetch("http://localhost/4000/appointment", {
+       method:"POST",
+       headers:{
+        "Conetnt-type":"application/json"
+       },
+       body:JSON.stringify({
+        
+       })
+    })
     setAppointments([...appointments, data.added]);
   };
 

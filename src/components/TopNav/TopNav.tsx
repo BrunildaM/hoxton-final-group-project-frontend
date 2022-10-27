@@ -13,9 +13,7 @@ const TopNav = () => {
         {/* <Link to="/sign-in-business"> */}
           <button>Business</button>
         {/* </Link> */}
-        {" "}
         <span> OR </span>
-        {" "}
         <button >Client</button>
       </div>
     </div>
