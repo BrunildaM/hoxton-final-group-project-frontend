@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 export function SignInClient() {
   const [user, setUser] = useState(null);
 
-  function signIn(data: { user: any; token: string }) {
-    setUser(data.user);
+  function signIn(data: any) {
+    setUser(data.client);
     localStorage.token = data.token;
   }
 
