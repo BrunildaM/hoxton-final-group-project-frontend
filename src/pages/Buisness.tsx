@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
+import { Business, Category } from "../components/types";
 import "../styles/Buisness.css";
 
 export function Buisness() {
-  const [buisnesses, setBuisnesses] = useState([]);
-  const [categoriesToFilter, setCategoriesToFilter] = useState([]);
+  const [buisnesses, setBuisnesses] = useState<Business[]>([]);
+  const [categoriesToFilter, setCategoriesToFilter] = useState("");
   const [search, setSearch] = useState("");
+  const [categories, setCategories] = useState([]);
+
 
   useEffect(() => {
     fetch("http://localhost:4000/business")
@@ -12,30 +15,28 @@ export function Buisness() {
       .then((businessesFromdb) => setBuisnesses(businessesFromdb));
   }, []);
 
+
+  useEffect(() => {
+    fetch("http://localhost:4000/categories")
+      .then((res) => res.json())
+      .then((businessesFromdb) => setCategories(businessesFromdb));
+  }, []);
+
+
   function selectCategoriesForFiltering(data: any) {
-    if (categoriesToFilter.length === 0) {
-      let array = structuredClone(categoriesToFilter);
-      array.push(data);
-      setCategoriesToFilter(array);
-    } else {
-      //@ts-ignore
-      if (categoriesToFilter.includes(data)) {
-        //@ts-ignore
-        let index = categoriesToFilter.indexOf(data);
-        let array = structuredClone(categoriesToFilter);
-        array.splice(index, 1);
-        setCategoriesToFilter(array);
-      } else {
-        let array = structuredClone(categoriesToFilter);
-        array.push(data);
-        setCategoriesToFilter(array);
-      }
-    }
+    setCategoriesToFilter(data);
   }
 
-  const filteredBuisnesses = buisnesses.filter((business) =>
-    business.name.toLowerCase().includes(search.toLowerCase())
-  );
+  let filteredBuisnesses = [];
+  categoriesToFilter
+    ? (filteredBuisnesses = buisnesses
+        .filter((business) =>
+          business.name.toLowerCase().includes(search.toLowerCase())
+        )
+        .filter((item) => item.category.name === categoriesToFilter))
+    : (filteredBuisnesses = buisnesses.filter((business) =>
+        business.name.toLowerCase().includes(search.toLowerCase())
+      ));
 
   /*function collectedFilter() {
     const array = [];
@@ -51,42 +52,26 @@ export function Buisness() {
     setBuisnessesToShow(array);
   }*/
 
-  /*useEffect(() => {
-    fetch("http://localhost:4000/business", {
-      method: "GET",
-    })
-      .then((resp) => resp.json())
-      .then((data) => setBuisnesses(data));
-  }, []);*/
-
   return (
     <section className="main-section">
-      <nav className="navbar">s</nav>
       <aside className="filter-section">
+        <h1 id="title">Filter By Category</h1>
         <section className="categories">
-          <input
-            type="checkbox"
-            name="hi"
-            id=""
-            value={"music"}
-            className="checkbox"
-            onChange={(e) => {
-              selectCategoriesForFiltering(e.target.value);
-            }}
-          />
-          <h1>music</h1>
-          <input
-            type="checkbox"
-            name="hi"
-            id=""
-            value={"food"}
-            className="checkbox"
-            onClick={(e) => {
-              //@ts-ignore
-              selectCategoriesForFiltering(e.target.value);
-            }}
-          />
-          <h1>food</h1>
+          {categories.map((item: Category) => (
+            <>
+              <input
+                type="radio"
+                name="hi"
+                id=""
+                value={item.name}
+                className="checkbox"
+                onChange={(e) => {
+                  selectCategoriesForFiltering(e.target.value);
+                }}
+              />
+              <p>{item.name}</p>
+            </>
+          ))}
         </section>
       </aside>
       <main className="main">
@@ -101,9 +86,6 @@ export function Buisness() {
                 setSearch(event.target.value);
               }}
             />
-            <button type="submit" className="search-button">
-              Search
-            </button>
           </form>
         </nav>
         <section className="grid-section">
@@ -139,15 +121,14 @@ export function Buisness() {
                   <h2> Description</h2>
                   <ul>
                     <li>
-                      <strong>Category : </strong>{" "}{business.category.name}
+                      <strong>Category : </strong> {business.category.name}
                     </li>
                     <li>
-                      <strong>Phone number : </strong>{" "}{business.phoneNumber}
+                      <strong>Phone number : </strong> {business.phoneNumber}
                     </li>
                     <li>
-                      <strong>Address: </strong>{" "}Tirana, Albania
+                      <strong>Address: </strong> Tirana, Albania
                     </li>
-                   
                   </ul>
                 </div>
               </div>

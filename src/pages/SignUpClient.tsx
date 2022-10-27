@@ -36,7 +36,7 @@ export function SignUpClient() {
     <div className="wrapper">
       <div className="section1-wrapper">
         <form
-          onSubmit={(e) => {
+          onSubmit={(e: any) => {
             e.preventDefault();
             fetch("http://localhost:4000/sign-up/client", {
               method: "POST",
@@ -44,8 +44,11 @@ export function SignUpClient() {
                 "Content-Type": "application/json",
               },
               body: JSON.stringify({
+                name: e.target.name.value,
                 email: e.target.email.value,
                 password: e.target.password.value,
+                phone: Number(e.target.phone.value),
+                avatar: e.target.avatar.value,
               }),
             })
               .then((resp) => resp.json())
@@ -61,6 +64,15 @@ export function SignUpClient() {
           <h1 className="h1">Sign Up</h1>
 
           <input
+            id="name"
+            name="name"
+            type="text"
+            placeholder="Name"
+            className="input-GS"
+            required
+          />
+
+          <input
             id="email"
             name="email"
             type="text"
@@ -74,6 +86,23 @@ export function SignUpClient() {
             type="password"
             placeholder="Password"
             className="input-GS"
+          />
+
+<input
+            id="phone"
+            name="phone"
+            type="number"
+            placeholder="Phone Number"
+            className="input-GS"
+            required
+          />
+          <input
+            id="avatar"
+            name="avatar"
+            type="text"
+            placeholder="Avatar"
+            className="input-GS"
+            required
           />
 
           <button className="button-GS">
