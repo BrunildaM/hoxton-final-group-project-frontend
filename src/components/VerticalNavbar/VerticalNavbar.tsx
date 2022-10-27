@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const CustomNav = ({ li }) => {
+const CustomNav = () => {
   const [window, setWindow] = useState(false);
 
   let openClose = () => {
@@ -13,24 +13,77 @@ const CustomNav = ({ li }) => {
   return (
     <nav className="navbar-menu" style={{ width: window === false ? 250 : 60 }}>
       <div className="burger" onClick={() => openClose()}>
-        <img src="img/menu.svg" alt="burger" />
+        <img src="src/assets/img/menu.svg" alt="burger" />
       </div>
       <ul className="navbar__list">
-        {li.map((item, i) => (
-          <div className="navbar__li-box" key={i}>
-            <img
-              src={item[1]}
-              alt={item[1]}
-              style={{ paddingLeft: window === false ? 27 : 17 }}
-            />
-            <li
-              className="navbar__li"
-              style={{ display: window === false ? "inline-block" : "none" }}
-            >
-              {item[0]}
-            </li>
-          </div>
-        ))}
+        <div className="navbar__li-box">
+          <img
+            src={"src/assets/img/dashboard.svg"}
+            alt={"img/dashboard.svg"}
+            style={{ paddingLeft: window === false ? 27 : 17 }}
+          />
+          <li
+            className="navbar__li"
+            style={{ display: window === false ? "inline-block" : "none" }}
+          >
+            <p>Dashboard</p>
+          </li>
+        </div>
+        <div className="navbar__li-box">
+          <img
+            src={"src/assets/img/restaurant.svg"}
+            alt={"img/restaurant.svg"}
+            style={{ paddingLeft: window === false ? 27 : 17 }}
+          />
+          <li
+            className="navbar__li"
+            style={{ display: window === false ? "inline-block" : "none" }}
+          >
+            <p>Restautant’s</p>
+          </li>
+        </div>
+
+        <div className="navbar__li-box">
+          <img
+            src={"src/assets/img/manage user.svg"}
+            alt={"img/dashboard.svg"}
+            style={{ paddingLeft: window === false ? 27 : 17 }}
+          />
+          <li
+            className="navbar__li"
+            style={{ display: window === false ? "inline-block" : "none" }}
+          >
+            <p>Manage User’s</p>
+          </li>
+        </div>
+
+        <div className="navbar__li-box">
+          <img
+            src={"src/assets/img/manage  order.svg"}
+            alt={"img/dashboard.svg"}
+            style={{ paddingLeft: window === false ? 27 : 17 }}
+          />
+          <li
+            className="navbar__li"
+            style={{ display: window === false ? "inline-block" : "none" }}
+          >
+            <p>Manage Order’s</p>
+          </li>
+        </div>
+
+        <div className="navbar__li-box">
+          <img
+            src={"src/assets/img/manage coupon.svg"}
+            alt={"img/dashboard.svg"}
+            style={{ paddingLeft: window === false ? 27 : 17 }}
+          />
+          <li
+            className="navbar__li"
+            style={{ display: window === false ? "inline-block" : "none" }}
+          >
+            <p>Manage Coupon’s</p>
+          </li>
+        </div>
       </ul>
     </nav>
   );
