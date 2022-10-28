@@ -13,6 +13,7 @@ import SignInClient from "../pages/SignInClient";
 import { SignUpClient } from "../pages/SignUpClient";
 import { BuisnessDetails } from "../pages/BuisnessDetails";
 import { BusinessOwner, Client } from "../components/types";
+import { CreateBusiness } from "../pages/CreateBusiness";
 
 type Props = {
   user: Client | BusinessOwner | null;
@@ -28,6 +29,7 @@ const Routers: React.FC<Props> = ({ user, setUser }) => {
       <Route path="/business" element={<Buisness />} />
       <Route path="/business/:id" element={<BuisnessDetails />} />
       <Route path="/calendartest" element={<CalendarTest />} />
+      <Route path="/create-business" element={<CreateBusiness />} />
       <Route
         path="/sign-in-business"
         element={<SignInBusiness setUser={setUser} />}
