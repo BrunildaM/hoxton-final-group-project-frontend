@@ -32,3 +32,8 @@
   cursor: pointer;
   color: rgba(0, 0, 0, 0.789);
 }
+
+.primary__btn {
+  background: var(--newsletter-bg);
+  color: var(--primary-color);
+}
