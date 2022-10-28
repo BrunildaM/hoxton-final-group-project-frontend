@@ -33,7 +33,9 @@ const TopNav: React.FC<Props> = ({ user, setUser }) => {
         <h1 className="logoText">BookingOlogy</h1>
       </div>
       {isLoggedIn ? (
-        <button onClick={logout}>Log Out</button>
+        <button className="primary__btn" onClick={logout}>
+          Log Out
+        </button>
       ) : (
         <div className="logout">
           <Link to="/sign-in-business">Business</Link> <span> OR </span>{" "}
