@@ -33,7 +33,12 @@
   color: rgba(0, 0, 0, 0.789);
 }
 
-.primary__btn {
+.nav__button {
   background: var(--newsletter-bg);
   color: var(--primary-color);
+  padding: 0.8rem 1.5rem;
+  border: none;
+  outline: none;
+  border-radius: 0.2rem;
+  cursor: pointer;
 }

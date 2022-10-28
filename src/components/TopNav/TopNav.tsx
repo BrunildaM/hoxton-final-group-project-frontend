@@ -33,7 +33,7 @@ const TopNav: React.FC<Props> = ({ user, setUser }) => {
         <h1 className="logoText">BookingOlogy</h1>
       </div>
       {isLoggedIn ? (
-        <button className="primary__btn" onClick={logout}>
+        <button className="nav__button" onClick={logout}>
           Log Out
         </button>
       ) : (
