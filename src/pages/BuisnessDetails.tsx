@@ -25,17 +25,23 @@ export function BuisnessDetails() {
   let [appointments, setAppointments] = useState<Appointment[]>([]);
   const [currentBusiness, setCurrentBusiness] = useState<Business | null>(null);
   console.log(appointments);
-  /*useEffect(() => {
-    fetch("http://localhost:4000/appointments")
+  useEffect(() => {
+    if (currentBusiness === null) {
+      return
+    }
+    fetch(
+      `http://localhost:4000/appointmentsForBusiness/${currentBusiness?.id}`,
+      { headers: { Authorization: localStorage.token } }
+    )
       .then((res) => res.json())
       .then((resp) => setAppointments(resp));
-  }, []);*/
+  }, [currentBusiness]);
 
-   useEffect(() => {
-   fetch(`http://localhost:4000/business/${params.id}`)
-     .then(res => res.json())
-     .then(business => setCurrentBusiness(business))
-   }, [])
+  useEffect(() => {
+    fetch(`http://localhost:4000/business/${params.id}`)
+      .then((res) => res.json())
+      .then((business) => setCurrentBusiness(business));
+  }, []);
 
   const params = useParams();
 
@@ -50,12 +56,31 @@ export function BuisnessDetails() {
         startDate: data.added.startDate,
         endDate: data.added.endDate,
         title: data.added.title,
-        businessOwnerId: Number(params.id),
-        email : localStorage.email,
-        id: 2,
+        businessId: Number(params.id),
+        email: localStorage.email,
+        
       }),
     });
     setAppointments([...appointments, data.added]);
+  };
+
+  const newAppointment = (data: any) => {
+    fetch(`http://localhost:4000/buisness/${params.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: localStorage.token,
+      },
+      body: JSON.stringify({
+        startDate: data.added.startDate,
+        endDate: data.added.endDate,
+        title: data.added.title,
+        businessOwnerId: 3,
+        id: Number(params.id),
+      }),
+    })
+      .then((resp) => resp.json())
+      .then((data) => setCurrentBusiness(data));
   };
 
   return (
@@ -64,7 +89,11 @@ export function BuisnessDetails() {
         <VerticalNavbar />
       </div>
       <div className="calendarDetails">
-        <Scheduler firstDayOfWeek={11} data={currentBusiness?.appointments} height={560}>
+        <Scheduler
+          firstDayOfWeek={11}
+          data={appointments}
+          height={560}
+        >
           <ViewState />
           <EditingState onCommitChanges={saveAppointment} />
           <IntegratedEditing />
