@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export function CreateBusiness() {
   
-    const [business, setBusiness] = useState([]);
+    const [business, setBusiness] = useState();
 
   return (
     <div className="wrapper">
