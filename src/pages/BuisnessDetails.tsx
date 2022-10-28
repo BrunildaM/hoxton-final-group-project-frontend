@@ -23,7 +23,7 @@ import { Appointment, Business } from "../components/types";
 
 export function BuisnessDetails() {
   let [appointments, setAppointments] = useState<Appointment[]>([]);
-  const [currentBusiness, setCurrentBusiness] = useState<Business | null>(null);
+  // const [currentBusiness, setCurrentBusiness] = useState<Business | null>(null);
   console.log(appointments);
 
   useEffect(() => {
@@ -32,28 +32,27 @@ export function BuisnessDetails() {
       .then((resp) => setAppointments(resp));
   }, []);
 
-   useEffect(() => {
-   fetch(`http://localhost:4000/business/${params.id}`)
-     .then(res => res.json())
-     .then(business => setCurrentBusiness(business))
-   }, [])
+  //  useEffect(() => {
+  //  fetch(`http://localhost:4000/business/${params.id}`)
+  //    .then(res => res.json())
+  //    .then(business => setCurrentBusiness(business))
+  //  }, [])
 
-  const params = useParams();
+  // const params = useParams();
 
   const saveAppointment = (data: any) => {
     fetch("http://localhost:4000/appointment", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
-        Authorization: localStorage.token,
+        // Authorization: localStorage.token,
       },
       body: JSON.stringify({
         startDate: data.added.startDate,
         endDate: data.added.endDate,
         title: data.added.title,
-        businessOwnerId: Number(params.businessOwnerId),
-        email : localStorage.email,
-        id: 2,
+        businessOwnerId: 2,
+        email : "sol@email.com",
       }),
     });
     setAppointments([...appointments, data.added]);

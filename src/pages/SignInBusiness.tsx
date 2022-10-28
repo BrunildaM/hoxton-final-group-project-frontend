@@ -79,7 +79,7 @@ const SignInBusiness: React.FC<Props> = ({ setUser }) => {
           />
 
           <button className="button-GS">
-            <b>Sign In</b>
+           <b>Sign In</b>
           </button>
 
           <p className="message">
