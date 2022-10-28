@@ -54,7 +54,7 @@ const SignInBusiness: React.FC<Props> = ({ setUser }) => {
                   alert(data.error);
                 } else {
                   signIn(data);
-                  navigate("/buisnesses");
+                  navigate(`/business/:id`);
                 }
               });
           }}

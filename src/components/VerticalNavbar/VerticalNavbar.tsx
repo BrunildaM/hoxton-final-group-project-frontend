@@ -39,7 +39,7 @@ const CustomNav = () => {
             className="navbar__li"
             style={{ display: window === false ? "inline-block" : "none" }}
           >
-            <p>Restautant’s</p>
+            <p>Shop</p>
           </li>
         </div>
 
@@ -67,7 +67,7 @@ const CustomNav = () => {
             className="navbar__li"
             style={{ display: window === false ? "inline-block" : "none" }}
           >
-            <p>Manage Order’s</p>
+            <p>Manage Appointments</p>
           </li>
         </div>
 

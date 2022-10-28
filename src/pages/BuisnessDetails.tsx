@@ -25,11 +25,12 @@ export function BuisnessDetails() {
   let [appointments, setAppointments] = useState<Appointment[]>([]);
   const [currentBusiness, setCurrentBusiness] = useState<Business | null>(null);
   console.log(appointments);
-  /*useEffect(() => {
+
+  useEffect(() => {
     fetch("http://localhost:4000/appointments")
       .then((res) => res.json())
       .then((resp) => setAppointments(resp));
-  }, []);*/
+  }, []);
 
    useEffect(() => {
    fetch(`http://localhost:4000/business/${params.id}`)
@@ -50,7 +51,7 @@ export function BuisnessDetails() {
         startDate: data.added.startDate,
         endDate: data.added.endDate,
         title: data.added.title,
-        businessOwnerId: Number(params.id),
+        businessOwnerId: Number(params.businessOwnerId),
         email : localStorage.email,
         id: 2,
       }),
@@ -64,7 +65,7 @@ export function BuisnessDetails() {
         <VerticalNavbar />
       </div>
       <div className="calendarDetails">
-        <Scheduler firstDayOfWeek={11} data={currentBusiness?.appointments} height={560}>
+        <Scheduler firstDayOfWeek={11} data={appointments} height={560}>
           <ViewState />
           <EditingState onCommitChanges={saveAppointment} />
           <IntegratedEditing />
