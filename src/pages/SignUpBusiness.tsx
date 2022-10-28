@@ -58,7 +58,7 @@ export function SignUpBusiness() {
                   alert(data.error);
                 } else {
                   // signIn(data);
-                  navigate("/home")
+                  navigate("/create-business")
                 }
               });
           }}

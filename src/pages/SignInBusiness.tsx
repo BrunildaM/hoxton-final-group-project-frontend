@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { BusinessOwner, Client } from "../components/types";
 
-export function SignInBusiness() {
-  const [user, setUser] = useState(null);
+type Props = {
+  setUser: React.Dispatch<React.SetStateAction<Client | BusinessOwner | null>>;
+};
+
+const SignInBusiness: React.FC<Props> = ({ setUser }) => {
   const navigate = useNavigate();
 
   function signIn(data: any) {
     setUser(data.businessOwner);
     localStorage.token = data.token;
-  }
-
-  function signOut() {
-    setUser(null);
-    localStorage.removeItem("token");
   }
 
   useEffect(() => {
@@ -55,7 +54,7 @@ export function SignInBusiness() {
                   alert(data.error);
                 } else {
                   signIn(data);
-                  navigate("/buisnesses");
+                  navigate(`/business/:id`);
                 }
               });
           }}
@@ -80,7 +79,7 @@ export function SignInBusiness() {
           />
 
           <button className="button-GS">
-            <b>Sign In</b>
+           <b>Sign In</b>
           </button>
 
           <p className="message">
@@ -93,4 +92,6 @@ export function SignInBusiness() {
       </div>
     </div>
   );
-}
+};
+
+export default SignInBusiness;
